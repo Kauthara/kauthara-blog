@@ -104,9 +104,6 @@ class Comment(Base):
         return f"id: {self.id}, text: {self.text}"
 
 
-Base.metadata.create_all(engine)
-
-
 @app.route('/')
 def get_all_posts():
     posts = session.query(BlogPost).all()
