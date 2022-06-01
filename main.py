@@ -21,7 +21,7 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 # CONNECT TO DB
-engine = create_engine('sqlite:///blog.db', echo=False, connect_args={"check_same_thread": False})
+engine = create_engine('postgres://oygytdhiubbtuh:5a0b09d6c6522d2e146bc4504dcb189e04e4e8ff74babd82b383284fb1aa61d8@ec2-54-80-122-11.compute-1.amazonaws.com:5432/d17rpg5rb1frcn', echo=False, connect_args={"check_same_thread": False})
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
