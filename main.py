@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, render_template, redirect, url_for, flash, request, abort, jsonify
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
@@ -16,12 +18,12 @@ from forms import CreatePostForm
 from flask_gravatar import Gravatar
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', '8BYkEfBA6O6donzWlSihBXox7C0sKR6b')
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
 # CONNECT TO DB
-engine = create_engine('postgres://oygytdhiubbtuh:5a0b09d6c6522d2e146bc4504dcb189e04e4e8ff74babd82b383284fb1aa61d8@ec2-54-80-122-11.compute-1.amazonaws.com:5432/d17rpg5rb1frcn', echo=False, connect_args={"check_same_thread": False})
+engine = create_engine(os.environ.get('DATABASE_URL', 'sqlite:///blog.db'), echo=False, connect_args={"check_same_thread": False})
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
