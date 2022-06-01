@@ -23,7 +23,7 @@ ckeditor = CKEditor(app)
 Bootstrap(app)
 
 # CONNECT TO DB
-engine = create_engine(os.environ.get('DATABASE_URL', 'sqlite:///blog.db'), echo=False, connect_args={"check_same_thread": False})
+engine = create_engine(os.environ.get('DATABASE_URL1', 'sqlite:///blog.db'), echo=False, connect_args={"check_same_thread": False})
 Session = sessionmaker(bind=engine)
 session = Session()
 Base = declarative_base()
